@@ -1,0 +1,11 @@
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\bin\Debug\net9.0\NitroWeb.Core.deps.json
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\bin\Debug\net9.0\NitroWeb.Core.dll
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\bin\Debug\net9.0\NitroWeb.Core.pdb
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\obj\Debug\net9.0\NitroWeb.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\obj\Debug\net9.0\NitroWeb.Core.AssemblyInfoInputs.cache
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\obj\Debug\net9.0\NitroWeb.Core.AssemblyInfo.cs
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\obj\Debug\net9.0\NitroWeb.Core.csproj.CoreCompileInputs.cache
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\obj\Debug\net9.0\NitroWeb.Core.dll
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\obj\Debug\net9.0\refint\NitroWeb.Core.dll
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\obj\Debug\net9.0\NitroWeb.Core.pdb
+C:\Users\mohse\RiderProjects\NitroWebProject\NitroWeb\src\NitroWeb.Core\obj\Debug\net9.0\ref\NitroWeb.Core.dll

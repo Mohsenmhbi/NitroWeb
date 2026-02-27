@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{21C34B2D-3A08-44F2-B8C9-02A39689488A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroWeb.Core", "src\NitroWeb.Core\NitroWeb.Core.csproj", "{E6D9D34A-8ED9-4F2C-9DAC-6DC2F2912614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroWeb.Console", "src\NitroWeb.Console\NitroWeb.Console.csproj", "{17388382-BDA5-4AB3-B24C-A2C17ACAC773}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6D9D34A-8ED9-4F2C-9DAC-6DC2F2912614} = {21C34B2D-3A08-44F2-B8C9-02A39689488A}
+		{17388382-BDA5-4AB3-B24C-A2C17ACAC773} = {21C34B2D-3A08-44F2-B8C9-02A39689488A}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6D9D34A-8ED9-4F2C-9DAC-6DC2F2912614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D9D34A-8ED9-4F2C-9DAC-6DC2F2912614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D9D34A-8ED9-4F2C-9DAC-6DC2F2912614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D9D34A-8ED9-4F2C-9DAC-6DC2F2912614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17388382-BDA5-4AB3-B24C-A2C17ACAC773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17388382-BDA5-4AB3-B24C-A2C17ACAC773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17388382-BDA5-4AB3-B24C-A2C17ACAC773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17388382-BDA5-4AB3-B24C-A2C17ACAC773}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

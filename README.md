@@ -1,53 +1,53 @@
-MiniTcpWeb (مینی فریم‌ورک HTTP روی TCP برای .NET)
+NitroWeb (A Minimal HTTP-over-TCP Framework for .NET)
 
-MiniTcpWeb یک مینی فریم‌ورک آموزشی برای ساخت سرویس‌های HTTP بدون استفاده از ASP.NET Core است. این پروژه با TcpListener/TcpClient یک سرور TCP راه‌اندازی می‌کند، درخواست‌های HTTP را parse می‌کند، یک HttpContext می‌سازد، و سپس با یک Pipeline (Middleware) و Attribute Routing درخواست را به Controller مناسب هدایت می‌کند.
+NitroWeb is an educational mini-framework for building HTTP services without using ASP.NET Core. It starts a TCP server using TcpListener/TcpClient, parses incoming HTTP requests, constructs an HttpContext, and then uses a Pipeline (Middleware) plus Attribute Routing to dispatch the request to the appropriate Controller.
 
-این پروژه برای یادگیری مفاهیم زیر طراحی شده:
+This project is designed to help you learn:
 
-تفاوت TCP خام با HTTP
+The difference between raw TCP and HTTP
 
-پیاده‌سازی ساده‌ی HttpContext/Request/Response
+A simple implementation of HttpContext / HttpRequest / HttpResponse
 
-طراحی Pipeline شبیه middlewareهای ASP.NET Core
+Designing a pipeline similar to ASP.NET Core middleware
 
-Routing مبتنی بر Attribute
+Attribute-based routing
 
-Auth و Logging در سطح middleware
+Authentication and logging at the middleware level
 
-ویژگی‌ها
-✅ ۱) TCP-based HTTP Server
+Features
+✅ 1) TCP-based HTTP Server
 
-سرور با TcpListener روی IP/Port مشخص Listen می‌کند.
+The server listens on a specified IP/Port using TcpListener.
 
-هر اتصال ورودی با TcpClient دریافت و پردازش می‌شود.
+Each incoming connection is accepted and handled via TcpClient.
 
-✅ ۲) HTTP Parsing حداقلی
+✅ 2) Minimal HTTP Parsing
 
-Request line را می‌خواند: METHOD /path HTTP/1.1
+Reads the request line: METHOD /path HTTP/1.1
 
-هدرها را استخراج می‌کند.
+Extracts headers
 
-بدنه را فقط با Content-Length می‌خواند.
+Reads the body only using Content-Length
 
-نکته: chunked در این نسخه پشتیبانی نمی‌شود.
+Note: Transfer-Encoding: chunked is not supported in this version.
 
-✅ ۳) HttpContext ساده
+✅ 3) Simple HttpContext
 
-برای هر درخواست ساخته می‌شود و شامل این‌هاست:
+A new context is created per request and contains:
 
 Request (Method, Path, Headers, Body)
 
 Response (StatusCode, Headers, WriteText/WriteJson)
 
-Items برای اشتراک داده بین middlewareها
+Items for sharing data across middlewares
 
-User برای احراز هویت (نمونه)
+User for authentication (sample)
 
-✅ ۴) Pipeline (Middleware)
+✅ 4) Pipeline (Middleware)
 
-مثل ASP.NET Core، زنجیره‌ای از middlewareها اجرا می‌شود:
+Like ASP.NET Core, the request passes through a chain of middlewares.
 
-نمونه ترتیب:
+Example order:
 
 Logging
 
@@ -55,42 +55,48 @@ Auth
 
 Routing
 
-✅ ۵) Attribute Routing + ControllerBase
+✅ 5) Attribute Routing + ControllerBase
 
-کنترلرها با [Route("/prefix")]
+Controllers are marked with [Route("/prefix")]
 
-اکشن‌ها با [HttpGet("/path")] و [HttpPost("/path")]
+Actions are marked with [HttpGet("/path")] and [HttpPost("/path")]
 
-پشتیبانی از route parameter مثل: /echo/{name}
+Supports route parameters like: /echo/{name}
 
-✅ ۶) Auth Middleware (نمونه)
+✅ 6) Auth Middleware (Sample)
 
-مسیرهایی که با یک prefix شروع می‌شوند (مثلاً /secure) نیاز به Authorization دارند.
+Paths that start with a prefix (e.g. /secure) require Authorization.
 
-نمونه‌ی ساده Bearer Token:
+Simple Bearer Token example:
 
 Authorization: Bearer dev-token-123
 
-✅ ۷) Logging Middleware
+✅ 7) Logging Middleware
 
-هر درخواست و زمان پاسخ را در کنسول چاپ می‌کند.
+Prints each request and the response duration to the console.
 
-معماری کلی (Flow)
+High-Level Architecture (Flow)
 
-۱) TcpHttpServer اتصال را می‌گیرد
-۲) HttpParser هدرها و بدنه را parse می‌کند
-۳) یک HttpContext ساخته می‌شود
-۴) درخواست وارد Pipeline می‌شود
-۵) RoutingMiddleware مسیر را match می‌کند و Controller را اجرا می‌کند
-۶) Controller یک IActionResult برمی‌گرداند و Response نوشته می‌شود
+TcpHttpServer accepts the connection
 
-ساختار پروژه (پیشنهادی)
+HttpParser parses headers and body
 
+An HttpContext is created
+
+The request enters the Pipeline
+
+RoutingMiddleware matches the route and invokes the Controller
+
+The Controller returns an IActionResult, and the Response is written back
+
+Project Structure (Suggested)
 Program.cs
-تنظیم pipeline، router و start کردن سرور
 
-MiniTcpWeb.cs
-هسته فریم‌ورک:
+Configures the pipeline, router, and starts the server.
+
+MiniTcpWeb.cs (framework core)
+
+Contains:
 
 TcpHttpServer
 
@@ -98,69 +104,70 @@ HttpParser
 
 HttpContext/Request/Response
 
-Pipeline و Middlewareها
+Pipeline & Middlewares
 
 AttributeRouter
 
-ControllerBase و ActionResults
+ControllerBase & ActionResults
 
 Controllers.cs
-کنترلرهای نمونه (API)
 
-اجرا
-پیش‌نیاز
+Sample API controllers.
 
-.NET 7 یا .NET 8
+Run
+Prerequisites
 
-اجرا
+.NET 7 or .NET 8
+
+Start
 dotnet run
 
-سرور روی آدرس زیر بالا می‌آید (طبق تنظیم Program.cs):
+The server will run at (based on your Program.cs config):
 
 http://127.0.0.1:8080
 
-نمونه Routeها
+Example Routes
 Ping
 
 GET /api/ping
 
 curl http://127.0.0.1:8080/api/ping
-Echo با route param
+Echo with route parameter
 
 GET /api/echo/{name}
 
 curl http://127.0.0.1:8080/api/echo/ali
-مسیر امن (نیازمند Bearer Token)
+Secure route (requires Bearer Token)
 
 GET /api/secure/me
 
-بدون توکن:
+Without token:
 
 curl http://127.0.0.1:8080/api/secure/me
 
-با توکن:
+With token:
 
 curl -H "Authorization: Bearer dev-token-123" http://127.0.0.1:8080/api/secure/me
-کانفیگ (Config)
-۱) تعیین IP و Port
+Configuration (Config)
+1) Set IP and Port
 
-در Program.cs:
+In Program.cs:
 
 await server.StartAsync("127.0.0.1", 8080, cts.Token);
 
-برای دسترسی از شبکه:
+To allow access from other machines on the network:
 
 await server.StartAsync("0.0.0.0", 8080, cts.Token);
-۲) ترتیب middlewareها
+2) Middleware order
 
-ترتیب مهم است (مثل ASP.NET):
+Order matters (similar to ASP.NET):
 
 var app = new AppBuilder()
     .Use(new LoggingMiddleware())
     .Use(new AuthMiddleware(options))
     .Use(new RoutingMiddleware(router))
     .Build();
-۳) تنظیم Auth
+3) Auth settings
 new AuthOptions
 {
     RequireAuthPathsPrefix = "/secure",
